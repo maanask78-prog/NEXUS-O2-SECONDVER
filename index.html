@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS O2 | Business Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="light light-one"></div>
+<div class="light light-two"></div>
+<div class="light light-three"></div>
+
+
+<!-- LOGIN -->
+
+<main id="loginPage" class="login-page">
+
+    <div class="login-card">
+
+        <div class="logo">
+            NEXUS <span>O2</span>
+        </div>
+
+        <p class="tagline">CONNECT • CREATE • EXPAND</p>
+
+        <div class="line"></div>
+
+        <h1>Business Portal</h1>
+
+        <p class="description">
+            Sign in to access NEXUS O2.
+        </p>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Username"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+
+        <button id="loginButton">
+            ENTER NEXUS O2
+        </button>
+
+        <p id="errorMessage"></p>
+
+    </div>
+
+</main>
+
+
+<!-- DASHBOARD -->
+
+<main id="dashboardPage" class="dashboard hidden">
+
+    <nav class="navbar">
+
+        <div class="nav-logo">
+            NEXUS <span>O2</span>
+        </div>
+
+        <button id="logoutButton" class="logout">
+            LOG OUT
+        </button>
+
+    </nav>
+
+
+    <!-- HOME -->
+
+    <section id="homeSection">
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="small-title">
+                    NEXUS O2 BUSINESS SYSTEM
+                </p>
+
+                <h1>
+                    Welcome to
+                    <span>NEXUS</span>
+                    <strong>O2</strong>
+                </h1>
+
+                <p id="welcomeText">
+                    Your business workspace is ready.
+                </p>
+
+            </div>
+
+            <div class="orb">
+                <div class="orb-inner">O2</div>
+            </div>
+
+        </section>
+
+
+        <section class="cards">
+
+            <div class="business-card">
+
+                <div class="icon">◈</div>
+
+                <h2>Business</h2>
+
+                <p>
+                    Manage your NEXUS O2 business environment.
+                </p>
+
+                <button onclick="showSection('homeSection')">
+                    OPEN
+                </button>
+
+            </div>
+
+
+            <div class="business-card">
+
+                <div class="icon">📦</div>
+
+                <h2>Products</h2>
+
+                <p>
+                    Track prices, quantities and inventory.
+                </p>
+
+                <button onclick="showSection('productsSection')">
+                    OPEN
+                </button>
+
+            </div>
+
+
+            <div class="business-card">
+
+                <div class="icon">◇</div>
+
+                <h2>Team</h2>
+
+                <p>
+                    Access the NEXUS O2 team workspace.
+                </p>
+
+                <button>
+                    OPEN
+                </button>
+
+            </div>
+
+
+            <div class="business-card">
+
+                <div class="icon">◎</div>
+
+                <h2>Files</h2>
+
+                <p>
+                    Access important company documents.
+                </p>
+
+                <button>
+                    OPEN
+                </button>
+
+            </div>
+
+        </section>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+
+    <section id="productsSection" class="products-section hidden">
+
+        <div class="section-header">
+
+            <div>
+                <p class="small-title">
+                    NEXUS O2 INVENTORY SYSTEM
+                </p>
+
+                <h1>Products & Inventory</h1>
+
+                <p>
+                    Track your products, prices and stock.
+                </p>
+            </div>
+
+            <button
+                class="back-button"
+                onclick="showSection('homeSection')"
+            >
+                ← Dashboard
+            </button>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <span>Total Products</span>
+                <strong id="totalProducts">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>Total Quantity</span>
+                <strong id="totalQuantity">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>Inventory Value</span>
+                <strong id="inventoryValue">₹0</strong>
+            </div>
+
+        </div>
+
+
+        <!-- ADD PRODUCT -->
+
+        <div class="add-product-box">
+
+            <h2>Add Product</h2>
+
+            <div class="product-inputs">
+
+                <input
+                    id="productName"
+                    type="text"
+                    placeholder="Product name"
+                >
+
+                <input
+                    id="productPrice"
+                    type="number"
+                    placeholder="Price"
+                    min="0"
+                >
+
+                <input
+                    id="productQuantity"
+                    type="number"
+                    placeholder="Quantity"
+                    min="0"
+                >
+
+                <button onclick="addProduct()">
+                    + ADD PRODUCT
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SEARCH -->
+
+        <input
+            id="searchProduct"
+            class="search"
+            type="text"
+            placeholder="🔎 Search products..."
+            oninput="renderProducts()"
+        >
+
+
+        <!-- PRODUCT TABLE -->
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Value</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="productTable"></tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <span>NEXUS O2</span>
+        <p>Powered by NEXUS O2 Technology</p>
+    </footer>
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
